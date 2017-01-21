@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public AnimationCurve GetCurrentPattern()
     {
-        return _stagePatterns[Score];
+        return _stagePatterns[CurStage];
     }
 
     public void GameReset()

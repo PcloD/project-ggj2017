@@ -13,14 +13,12 @@ public class DigitalDiagram : MonoBehaviour
 
     [SerializeField] private int _sliceNumber = 400;
     [SerializeField] private int _amplitudeMultiplier = 10;
-    [SerializeField] private float _frequency = 5;
-
-    private float _timer;
 
     private float _distance = 100;
 
     private LineRenderer _lineRenderer;
     private Vector3[] _vertices;
+    private float _inverse = 1;
 
     private void Awake()
     {
@@ -32,8 +30,7 @@ public class DigitalDiagram : MonoBehaviour
 
         for (int cnt = 0; cnt < _sliceNumber; cnt++)
         {
-            _vertices[cnt] = new Vector3(-_distance + cnt * _distance * 2 / _sliceNumber, 0, _canvas.position.z);
-//            _vertices[cnt] = Camera.main.WorldToViewportPoint(_vertices[cnt]);
+            _vertices[cnt] = new Vector3(-_distance + cnt * _distance * 2 / _sliceNumber, 0, _canvas.position.z + 1);
         }
 
         _lineRenderer.numPositions = _sliceNumber;
@@ -42,14 +39,8 @@ public class DigitalDiagram : MonoBehaviour
 
     private void Update()
     {
-        _timer += Time.deltaTime * _frequency;
-
-        if (_timer >= 2)
-        {
-            _timer = 0;
-        }
-
-        UpdateAmplitude(_basicPattern.localScale.x - _minCheckingCircle.localScale.x);
+        _inverse = GameManager.Instance.Score % 2 == 0 ? 1 : -1;
+        UpdateAmplitude(_inverse * (_basicPattern.localScale.x - _minCheckingCircle.localScale.x));
     }
 
     private void UpdateAmplitude(float latestAmplitude)
