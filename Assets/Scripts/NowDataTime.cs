@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NowDataTime : MonoBehaviour {
 
-	DateTime Now;
+	private DateTime Now;
+	[SerializeField]private Text _DataTimeText;
 	void Start () 
 	{
 
@@ -14,8 +16,7 @@ public class NowDataTime : MonoBehaviour {
 	void Update () 
 	{
 		Now = DateTime.Now;
-
-		Debug.Log (Now.Hour+":"+Now.Minute+":"+Now.Second);
-		
+		_DataTimeText.text = Now.Hour + ":" + Now.Minute + ":" + Now.Second;
+		//Debug.Log (Now.Hour+":"+Now.Minute+":"+Now.Second);
 	}
 }
