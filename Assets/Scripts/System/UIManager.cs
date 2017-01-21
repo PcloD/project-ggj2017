@@ -14,26 +14,36 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private BasicPattern _basicPattern;
     [SerializeField]
-    private Button _startButton;
+    private GameObject _startText;
     [SerializeField]
     private Text _scoreText;
 
     private void Awake()
     {
         _instance = this;
-        _startButton.onClick.AddListener(OnStartGameButtonClicked);
     }
 
-    private void OnStartGameButtonClicked()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _startText.activeSelf)
+        {
+            StartCoroutine(StartGame());
+        }
+    }
+
+    private IEnumerator StartGame()
     {
         GameManager.Instance.ResetGame();
-        _startButton.gameObject.SetActive(false);
+        _startText.SetActive(false);
+
+        yield return new WaitForEndOfFrame();
+
         _basicPattern.OnStartGame();
     }
 
     public void OnLossGame()
     {
-        _startButton.gameObject.SetActive(true);
+        _startText.SetActive(true);
     }
 
     public void OnScoreChanged(int score)
