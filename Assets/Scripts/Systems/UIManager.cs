@@ -87,6 +87,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
+        AudioManager.Instance.OnStartButtonClicked();
         _basicPattern.OnStartGame();
     }
 

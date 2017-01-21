@@ -69,6 +69,7 @@ public class BasicPattern : MonoBehaviour
 
     private void OnGetScore()
     {
+        AudioManager.Instance.OnCheckSuccess();
         GameManager.Instance.AddScore();
         _curPattern = GameManager.Instance.GetCurrentPattern();
 
@@ -78,6 +79,7 @@ public class BasicPattern : MonoBehaviour
 
     private void OnLossGame()
     {
+        AudioManager.Instance.OnCheckFailure();
         _start = false;
         UIManager.Instance.OnLossGame();
 
