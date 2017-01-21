@@ -642,7 +642,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     type: 11
-    radius: 30
+    radius: 20
     angle: 25
     length: 5
     boxX: 1
@@ -3261,7 +3261,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     type: 11
-    radius: 32.9
+    radius: 20
     angle: 25
     length: 5
     boxX: 1
