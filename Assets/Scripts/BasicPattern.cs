@@ -2,7 +2,6 @@
 
 public class BasicPattern : MonoBehaviour
 {
-    [SerializeField] private AnimationCurve _animationPattern;
     [SerializeField] private float _maxScale = 2f;
     [SerializeField] private Transform _minCheckingCircle;
     [SerializeField] private Transform _maxCheckingCircle;
@@ -11,6 +10,8 @@ public class BasicPattern : MonoBehaviour
     private Transform _transform;
     private bool _start = false;
     private float _timer = 0;
+    private int _currentStage = 0;
+    private AnimationCurve _curPattern;
 
     private void Awake()
     {
@@ -22,7 +23,9 @@ public class BasicPattern : MonoBehaviour
     {
         _timer = 0;
         _start = false;
+        _currentStage = 0;
         _transform.localScale = Vector3.one * _minCheckingCircle.localScale.x;
+        _curPattern = GameManager.Instance.GetCurrentPattern();
     }
 
     private void Update()
@@ -35,7 +38,7 @@ public class BasicPattern : MonoBehaviour
         OnCheckCircle();
 
         _timer += Time.deltaTime * _speed;
-        _transform.localScale = (_animationPattern.Evaluate(_timer) + _minCheckingCircle.localScale.x) * Vector3.one;
+        _transform.localScale = (_curPattern.Evaluate(_timer) + _minCheckingCircle.localScale.x) * Vector3.one;
 
         if (_timer >= 2f)
         {
@@ -61,7 +64,8 @@ public class BasicPattern : MonoBehaviour
 
     private void OnGetScore()
     {
-        UIManager.Instance.OnGetScore();
+        GameManager.Instance.AddScore();
+        _curPattern = GameManager.Instance.GetCurrentPattern();
     }
 
     private void OnLossGame()

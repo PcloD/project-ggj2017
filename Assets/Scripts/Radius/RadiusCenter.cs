@@ -5,6 +5,16 @@ public class RadiusCenter
 {
 	private static RadiusCenter Instance = null;
 
+	private enum LEVEL
+	{
+		ONE,
+		TWO,
+		THREE,
+	}
+
+	private Dictionary<LEVEL, RandomRadius> LevelInfo = null;
+	private RandomRadius CurrentLevel = null;
+
 	public static RadiusCenter GetInstance()
 	{
 		if (Instance == null) 
@@ -17,19 +27,24 @@ public class RadiusCenter
 
 	private RadiusCenter()
 	{
+		LevelInfo = new Dictionary<LEVEL, RandomRadius> ();
+
+		 LevelInfo.Add (LEVEL.ONE, new Level1 ());
+
+		SetLevelByScore (0);
 	}
 
 	public void SetLevelByScore(int score)
 	{
-		return;
+		CurrentLevel = LevelInfo [LEVEL.ONE];
 	}
 
-	public float GetRedRadius()
+	public float GetRedScale()
 	{
-		return 2.0f;
+		return CurrentLevel.GetRedScale();
 	}
 
-	public float GetGreenRadius()
+	public float GetGreenScale()
 	{
 		return 1.0f;
 	}
