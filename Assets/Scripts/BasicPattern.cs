@@ -11,6 +11,7 @@ public class BasicPattern : MonoBehaviour
     private bool _start = false;
     private float _timer = 0;
     private AnimationCurve _curPattern;
+    private Vector3 _currentRadius;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class BasicPattern : MonoBehaviour
 
     private void Reset()
     {
+        UpdateRadius();
+
         _timer = 0;
         _start = false;
         _transform.localScale = Vector3.one * _minCheckingCircle.localScale.x;
@@ -40,7 +43,7 @@ public class BasicPattern : MonoBehaviour
         OnCheckCircle();
 
         _timer += Time.deltaTime * _speed;
-        _transform.localScale = (_curPattern.Evaluate(_timer) + _minCheckingCircle.localScale.x) * Vector3.one;
+        _transform.localScale = (_curPattern.Evaluate(_timer) * _currentRadius.x + _minCheckingCircle.localScale.x) * Vector3.one;
 
         if (_timer >= 2f)
         {
@@ -70,6 +73,7 @@ public class BasicPattern : MonoBehaviour
         _curPattern = GameManager.Instance.GetCurrentPattern();
 
         CreateClickEffect(Color.white);
+        UpdateRadius();
     }
 
     private void OnLossGame()
@@ -95,5 +99,12 @@ public class BasicPattern : MonoBehaviour
         clickEffect.transform.SetParent(_transform);
         clickEffect.transform.localPosition = Vector3.zero;
         clickEffect.GetComponent<ClickEffect>().Initialize(color);
+    }
+
+    private void UpdateRadius()
+    {
+        _currentRadius = RadiusDataManager.Instance.GetScales();
+        _maxCheckingCircle.transform.localScale = Vector3.one * _currentRadius.y;
+        _minCheckingCircle.transform.localScale = Vector3.one * _currentRadius.z;
     }
 }

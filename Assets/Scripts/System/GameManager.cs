@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     public int Score
     {
         get { return _score; }
-        set { _score = value; }
+        set
+        {
+            _score = value;
+            UIManager.Instance.OnScoreChanged(_score);
+        }
     }
     private int _score;
 
@@ -48,20 +52,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        UIManager.Instance.OnScoreChanged(_score);
+        UIManager.Instance.OnScoreChanged(Score);
     }
 
     public AnimationCurve GetCurrentPattern()
     {
-        return _stagePatterns[_curStage];
+        return _stagePatterns[Score];
     }
 
-    public void ResetGame()
+    public void GameReset()
     {
         CurStage = 0;
         Score = 0;
-
-        RadiusDataManager.Instance.SetLevel (_curStage);
-        UIManager.Instance.OnScoreChanged(_score);
     }
 }

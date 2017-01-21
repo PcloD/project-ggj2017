@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        GameManager.Instance.ResetGame();
+        GameManager.Instance.GameReset();
         _startText.SetActive(false);
 
         yield return new WaitForEndOfFrame();
