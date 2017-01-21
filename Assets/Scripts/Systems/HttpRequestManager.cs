@@ -18,7 +18,12 @@ public class HttpRequestManager : MonoBehaviour
     }
 
     public void Upload(string name, string score)
-    {
+	{
+		if( AchieveManager.Instance.LowestRankScore >= int.Parse(score) )
+		{
+			return;
+		}
+
         StartCoroutine(UploadScore(name, score));
     }
 

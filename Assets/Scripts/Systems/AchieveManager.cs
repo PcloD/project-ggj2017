@@ -27,7 +27,7 @@ public class AchieveManager
 
 	private int HightestScore = 0;
 //	private int LastScore = 0;
-	private int _LowestRankScore=int.MaxValue;
+	private int _LowestRankScore=0;
 	public int LowestRankScore
 	{ 
 		get
