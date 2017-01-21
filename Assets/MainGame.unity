@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.75
-  m_Text: 10
+  m_Text: 0
 --- !u!222 &656274394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -723,7 +723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicPattern: {fileID: 1110411146}
   _startText: {fileID: 428981008}
-  _scoreText: {fileID: 656274393}
+  _lastScoreText: {fileID: 1057194190}
+  _highestScoreText: {fileID: 656274393}
 --- !u!4 &783884998
 Transform:
   m_ObjectHideFlags: 0
@@ -1020,10 +1021,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1f2a4003cb04322ba445def731fb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxScale: 2
   _minCheckingCircle: {fileID: 1642063914}
   _maxCheckingCircle: {fileID: 405591832}
   _speed: 1
+  _clickEffect: {fileID: 1656212492877884, guid: 3ce1938c1fc8249f08208ec74e828559,
+    type: 2}
 --- !u!114 &1110411147
 MonoBehaviour:
   m_ObjectHideFlags: 0

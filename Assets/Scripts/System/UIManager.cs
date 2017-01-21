@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _startText;
     [SerializeField]
-    private Text _scoreText;
+    private Text _lastScoreText;
+    [SerializeField]
+    private Text _highestScoreText;
 
     private void Awake()
     {
@@ -48,6 +50,6 @@ public class UIManager : MonoBehaviour
 
     public void OnScoreChanged(int score)
     {
-        _scoreText.text = score.ToString();
+        _lastScoreText.text = score.ToString();
     }
 }
