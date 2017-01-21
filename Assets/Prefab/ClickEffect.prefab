@@ -362,7 +362,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.25490198, b: 0.19215687, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 1.5
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1627,9 +1627,9 @@ ParticleSystem:
     inWorldSpace: 0
     dampen: 1
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
-      scalar: 8
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1746,7 +1746,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     separateAxes: 0
-    frequency: 4
+    frequency: 2
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
