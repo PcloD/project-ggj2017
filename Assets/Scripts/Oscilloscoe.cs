@@ -5,6 +5,7 @@ using UnityEngine;
 public class Oscilloscoe : MonoBehaviour {
     public static Oscilloscoe Instance;
 
+    public Vector2 StartPoint;
     public LineRenderer lineRenderer
     {
         get
@@ -19,11 +20,16 @@ public class Oscilloscoe : MonoBehaviour {
     public float intervalTime;
     public bool updateLine = false;
     public float pointMoveSpeed;
-    public float scale = 2;
+    public float hight;
+    public float minHeight;
+    public float maxHeight;
     public float StartWidth;
     public float EndWidth;
     public Color LineColor;
-    public Vector2 StartOnViewportPos;
+    public Color LineStartColor;
+    public Color LineEndColor;
+
+    public int MaxNumber; 
 
     private float lastTime;
     private List<Vector3> points = new List<Vector3>();
@@ -38,21 +44,27 @@ public class Oscilloscoe : MonoBehaviour {
             return _mainCamera;
         }
     }
+    private Canvas _canvas;
+    private Canvas getCanvas
+    {
+        get
+        {
+            if(_canvas == null)
+                _canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            return _canvas;
+        }
+    }
 
 
     void Awake()
     {
         Instance = this;
-        if(lineRenderer.material == null)
-        {
-            lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
-            lineRenderer.material.color = LineColor;
-        }
+        lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
+        lineRenderer.material.color = LineColor;
+        lineRenderer.startColor = LineStartColor;
+        lineRenderer.endColor = LineEndColor;
         lineRenderer.startWidth = StartWidth;
         lineRenderer.endWidth = EndWidth;
-        //Vector3 viewPos = new Vector3(StartOnViewportPos.x * Screen.width, StartOnViewportPos.y * Screen.height, Camera.main.nearClipPlane);
-        //Vector3 wpos = viewPos;
-        //transform.position = wpos;
     }
 
     void Start()
@@ -64,6 +76,10 @@ public class Oscilloscoe : MonoBehaviour {
     {
         points.Clear();
         updateLine = true;
+        for(int i = 0; i< MaxNumber; i++)
+        {
+            AddLinePoint(i*intervalTime);
+        }
     }
 
     void Update()
@@ -76,17 +92,17 @@ public class Oscilloscoe : MonoBehaviour {
         {
             lastTime = intervalTime;
 
-            AddLinePoint();
+            AddLinePoint(Time.time);
         }
         UpdatPoints();
     }
 
-    void AddLinePoint()
+    void AddLinePoint(float time)
     {
-        float value = GameManager.Instance.GetCurrentPattern().Evaluate(Time.time);
-        Vector3 newPoint = new Vector3(transform.position.x, (value * scale) + transform.position.y , transform.position.z);
+        float value = GameManager.Instance.GetCurrentPattern().Evaluate(time);
+        Vector3 newPoint = Vector3.up * value;
         points.Add(newPoint);
-        if (points.Count > 70)
+        if (points.Count > MaxNumber)
             points.RemoveAt(0);
     }
 
@@ -95,10 +111,14 @@ public class Oscilloscoe : MonoBehaviour {
         lineRenderer.SetVertexCount(points.Count);
         for (int i = 0; i < points.Count; i++)
         {
-            points[i] = new Vector3(points[i].x - (Time.deltaTime*pointMoveSpeed), points[i].y, points[i].z);
-            lineRenderer.SetPosition(i,Camera.main.WorldToViewportPoint(points[i]));
+            Vector3 newPos = FixPos(i);
+            lineRenderer.SetPosition(i, newPos);
         }
     }
 
-
+    Vector3 FixPos(int index)
+    {
+        Vector3 newPos = new Vector3(((points.Count - index) * pointMoveSpeed) + (Time.deltaTime * pointMoveSpeed) + StartPoint.x, (points[index].y * Mathf.Clamp(hight * (points.Count - index), minHeight, maxHeight)) + Camera.main.transform.position.y + StartPoint.y, /*getCanvas.transform.position.z*/0);
+        return newPos;
+    }
 }
