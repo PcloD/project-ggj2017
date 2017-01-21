@@ -8,7 +8,7 @@ public class NameInput : MonoBehaviour
 	[SerializeField]
 	private Text _inputText;
 	[SerializeField]
-	private GameObject _inputBtn;
+	private Button _inputBtn;
 
 	private void Awake()
 	{

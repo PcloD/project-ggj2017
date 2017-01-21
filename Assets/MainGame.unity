@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2839,6 +2839,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 952491166}
+  - component: {fileID: 952491167}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -2863,6 +2864,22 @@ Transform:
   m_Father: {fileID: 1312915122}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &952491167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952491165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc39f47b610f1414b9b258ff12becc9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serverScoreList:
+  - {fileID: 692642860}
+  - {fileID: 637624447}
+  - {fileID: 957889530}
+  _myScore: {fileID: 1587733487}
 --- !u!1 &957889528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,6 +5290,7 @@ GameObject:
   - component: {fileID: 1873232518}
   - component: {fileID: 1873232520}
   - component: {fileID: 1873232519}
+  - component: {fileID: 1873232521}
   m_Layer: 5
   m_Name: NameInput
   m_TagString: Untagged
@@ -5332,6 +5350,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1873232517}
+--- !u!114 &1873232521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873232517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2f810cdde0149d096e9dc1d006ae8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputText: {fileID: 370976168}
+  _inputBtn: {fileID: 0}
 --- !u!1 &1926939341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5340,6 +5371,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1926939342}
+  - component: {fileID: 1926939343}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -5364,6 +5396,22 @@ Transform:
   m_Father: {fileID: 1312915122}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1926939343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1926939341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2cbb821829e4a74acb0cc0c125fda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serverNameList:
+  - {fileID: 1693305851}
+  - {fileID: 174724908}
+  - {fileID: 1779860306}
+  _myName: {fileID: 1978759534}
 --- !u!1 &1935934189
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,6 +6262,7 @@ GameObject:
   - component: {fileID: 2099499936}
   - component: {fileID: 2099499938}
   - component: {fileID: 2099499937}
+  - component: {fileID: 2099499939}
   m_Layer: 5
   m_Name: Ranking
   m_TagString: Untagged
@@ -6273,6 +6322,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099499935}
+--- !u!114 &2099499939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2099499935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e1760551ab844cab3f76b46e6ebd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rankName: {fileID: 1926939343}
+  _rankScore: {fileID: 952491167}
 --- !u!1 &2128157319
 GameObject:
   m_ObjectHideFlags: 0
