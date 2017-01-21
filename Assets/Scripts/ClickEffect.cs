@@ -5,6 +5,8 @@ public class ClickEffect : MonoBehaviour
 {
     [SerializeField] private float _effectTime = 1.0f;
     [SerializeField] private float _scaleSpeed = 1.0f;
+    [SerializeField] private GameObject _successParticle;
+    [SerializeField] private GameObject _failureParticle;
 
     private Transform _transform;
     private Image _image;
@@ -30,10 +32,13 @@ public class ClickEffect : MonoBehaviour
         _image.color = Color.Lerp(_clearColor, _color, _effectTime);
     }
 
-    public void Initialize(Color color)
+    public void Initialize(bool success)
     {
-        _color = color;
+        _color = success ? Color.white : Color.red;
         _image.color = _color;
         _transform.localScale = Vector3.one;
+
+        _successParticle.SetActive(success);
+        _failureParticle.SetActive(!success);
     }
 }

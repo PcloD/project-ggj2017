@@ -72,7 +72,7 @@ public class BasicPattern : MonoBehaviour
         GameManager.Instance.AddScore();
         _curPattern = GameManager.Instance.GetCurrentPattern();
 
-        CreateClickEffect(Color.white);
+        CreateClickEffect(true);
         UpdateRadius();
     }
 
@@ -84,7 +84,7 @@ public class BasicPattern : MonoBehaviour
 		AchieveManager.Instance.SetHightestScore (GameManager.Instance.Score);
 
 
-        CreateClickEffect(Color.red);
+        CreateClickEffect(false);
     }
 
     public void OnStartGame()
@@ -93,12 +93,12 @@ public class BasicPattern : MonoBehaviour
         _start = true;
     }
 
-    private void CreateClickEffect(Color color)
+    private void CreateClickEffect(bool success)
     {
         GameObject clickEffect = Instantiate(_clickEffect);
         clickEffect.transform.SetParent(_transform);
         clickEffect.transform.localPosition = Vector3.zero;
-        clickEffect.GetComponent<ClickEffect>().Initialize(color);
+        clickEffect.GetComponent<ClickEffect>().Initialize(success);
     }
 
     private void UpdateRadius()
