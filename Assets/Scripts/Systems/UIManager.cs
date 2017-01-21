@@ -43,6 +43,10 @@ public class UIManager : MonoBehaviour
         _instance = this;
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
+
+        _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
+        _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
+        _startText.gameObject.AddComponent<RectTransformScaleShowHide>();
     }
 
     private void Start()
@@ -135,9 +139,12 @@ public class UIManager : MonoBehaviour
     private IEnumerator StartGame()
     {
         GameManager.Instance.GameReset();
-        _startText.SetActive(false);
-        _settingButton.gameObject.SetActive(false);
-		_rankingButton.gameObject.SetActive (false);
+        //_startText.SetActive(false);
+        _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+        //_settingButton.gameObject.SetActive(false);
+        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+        //_rankingButton.gameObject.SetActive (false);
+        _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
 
         yield return new WaitForEndOfFrame();
 
@@ -154,9 +161,12 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        _startText.SetActive(true);
-		_settingButton.gameObject.SetActive(true);
-		_rankingButton.gameObject.SetActive (true);
+        //_startText.SetActive(true);
+        _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        //_settingButton.gameObject.SetActive(true);
+        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        //_rankingButton.gameObject.SetActive (true);
+        _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
     }
 
