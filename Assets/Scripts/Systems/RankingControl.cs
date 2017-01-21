@@ -17,6 +17,7 @@ public class RankingControl : MonoBehaviour {
 
 	public void SetNameAndScore( object serverData )
 	{
-
+		_rankName.SetNameAndScore (serverData);
+		_rankScore.SetNameAndScore (serverData);
 	}
 }

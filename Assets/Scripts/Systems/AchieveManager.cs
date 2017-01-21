@@ -27,6 +27,19 @@ public class AchieveManager
 
 	private int HightestScore = 0;
 //	private int LastScore = 0;
+	private int _LowestRankScore=int.MaxValue;
+	public int LowestRankScore
+	{ 
+		get
+		{
+			return _LowestRankScore;
+		}
+		set
+		{
+			_LowestRankScore = value;
+		}
+	}
+
 
 	private AchieveManager()
 	{
@@ -65,7 +78,7 @@ public class AchieveManager
 			name = "ILoveGGJ";
 		}
 
-		name = name.Substring (0, Math.Min(name.Length,8));
+		name = name.Substring (0, Math.Min(name.Length,8 ));
 		PlayerPrefs.SetString (NICK_NAME, name);
 	}
 

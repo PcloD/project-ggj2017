@@ -21,6 +21,18 @@ public class RankScore : MonoBehaviour {
 
 	public void SetNameAndScore( object serverData )
 	{
+		Dictionary<string,object>[] RankInfo = serverData as Dictionary<string,object>[];
+		if (RankInfo == null) 
+		{
+			return;
+		}
 
+		int size = Mathf.Min(_serverScoreList.Length, RankInfo.Length);
+		for (int index = 0; index < size; index++) 
+		{
+			_serverScoreList [index].text = RankInfo [index] ["score"].ToString ();
+		}
+
+		_myScore.text = AchieveManager.Instance.GetHightestScore().ToString();
 	}
 }

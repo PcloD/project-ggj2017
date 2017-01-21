@@ -21,6 +21,18 @@ public class RankName : MonoBehaviour {
 
 	public void SetNameAndScore( object serverData )
 	{
-		
+		Dictionary<string,object>[] RankInfo = serverData as Dictionary<string,object>[];
+		if (RankInfo == null) 
+		{
+			return;
+		}
+
+		int size = Mathf.Min(_serverNameList.Length, RankInfo.Length);
+		for (int index = 0; index < size; index++) 
+		{
+			_serverNameList [index].text = RankInfo [index] ["name"].ToString ();
+		}
+
+		_myName.text = AchieveManager.Instance.GetNickName();
 	}
 }

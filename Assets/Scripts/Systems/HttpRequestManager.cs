@@ -34,7 +34,7 @@ public class HttpRequestManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(www.error))
         {
-            Debug.LogError(www.text);
+			UIManager.Instance.UpdateRankingPanel(www.text);
         }
     }
 
@@ -51,7 +51,7 @@ public class HttpRequestManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(www.error))
         {
-            Debug.LogError(www.text);
+            UIManager.Instance.UpdateRankingPanel(www.text);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding.Serialization.JsonFx;
 
 public class UIManager : MonoBehaviour
 {
@@ -89,6 +90,26 @@ public class UIManager : MonoBehaviour
 	{
 		_rankingPanel.SetActive (true);
 		_rankingPanel.SendMessage ("ClearNameAndScore");
+		HttpRequestManager.Instance.Download ();
+	}
+
+	public void UpdateRankingPanel( string RankingStr )
+	{
+		Debug.logger.Log (RankingStr);
+		Dictionary<string,object>[] RankInfo = JsonReader.Deserialize<Dictionary<string,object>[]> (RankingStr);
+		int LowestScore = int.MaxValue;
+		foreach( Dictionary<string,object> Info in RankInfo )
+		{
+			int Score = (int)Info ["score"];
+			LowestScore = Math.Min (LowestScore, Score);
+		}
+		AchieveManager.Instance.LowestRankScore = LowestScore;
+
+		if (!_rankingPanel.activeInHierarchy) 
+		{
+			return;
+		}
+		_rankingPanel.SendMessage ( "SetNameAndScore", RankInfo );
 	}
 
 	private void OnRankingClosed()
