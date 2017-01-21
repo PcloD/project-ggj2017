@@ -2,7 +2,6 @@
 
 public class BasicPattern : MonoBehaviour
 {
-    [SerializeField] private float _minScale = 1f;
     [SerializeField] private float _maxScale = 2f;
     [SerializeField] private Transform _minCheckingCircle;
     [SerializeField] private Transform _maxCheckingCircle;
@@ -47,7 +46,7 @@ public class BasicPattern : MonoBehaviour
         {
             _transform.localScale -= Vector3.one * _scaleSpeed * Time.deltaTime;
 
-            if (_transform.localScale.x < _minScale)
+            if (_transform.localScale.x < _minCheckingCircle.localScale.x)
             {
                 OnLossGame();
             }
