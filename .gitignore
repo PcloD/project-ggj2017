@@ -1,5 +1,6 @@
 Library
 Temp
-project-ggj2017.sln
-Assembly-CSharp.csproj
+*.sln
+*.csproj
 obj
+*.userprefs
