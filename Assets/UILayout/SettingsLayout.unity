@@ -514,8 +514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicPattern: {fileID: 1110411146}
-  _startButton: {fileID: 658275439}
-  _scoreText: {fileID: 591868587}
+  _startText: {fileID: 0}
+  _lastScoreText: {fileID: 0}
+  _highestScoreText: {fileID: 0}
 --- !u!4 &823108593
 Transform:
   m_ObjectHideFlags: 0
@@ -724,8 +725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -290, y: -160}
-  m_SizeDelta: {x: -580, y: 500}
+  m_AnchoredPosition: {x: 0, y: -160}
+  m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048814574
 MonoBehaviour:
@@ -813,16 +814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1f2a4003cb04322ba445def731fb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationPattern:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _maxScale: 2
   _minCheckingCircle: {fileID: 1642063914}
   _maxCheckingCircle: {fileID: 405591832}
   _speed: 1
+  _clickEffect: {fileID: 0}
 --- !u!114 &1110411147
 MonoBehaviour:
   m_ObjectHideFlags: 0
