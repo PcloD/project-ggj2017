@@ -21,6 +21,7 @@ public class RadiusCenter
 
 	public void SetLevelByScore(int score)
 	{
+		return;
 	}
 
 	public float GetRedRadius()
