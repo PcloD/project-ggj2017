@@ -29,8 +29,8 @@ public class UIManager : MonoBehaviour
     private void OnStartGameButtonClicked()
     {
         _score = 0;
-        _basicPattern.OnStartGame();
         _startButton.gameObject.SetActive(false);
+        _basicPattern.OnStartGame();
     }
 
     public void OnLossGame()
