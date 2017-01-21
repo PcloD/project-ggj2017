@@ -48,7 +48,7 @@ public class AchieveManager
 			HightestScore = PlayerPrefs.GetInt (HIGHTEST_SCORE);
 		}
 
-		if (!PlayerPrefs.HasKey (NICK_NAME)) 
+		 if (!PlayerPrefs.HasKey (NICK_NAME)) 
 		{
 			UIManager.Instance.ShowNickNamePanel ();
 		}
@@ -73,7 +73,7 @@ public class AchieveManager
 	public void SetNickName( string name )
 	{
 		string checkStr = new Regex (@"\w").Replace (name, "");
-		if (string.IsNullOrEmpty (checkStr)) 
+		if (!string.IsNullOrEmpty (checkStr)) 
 		{
 			name = "ILoveGGJ";
 		}

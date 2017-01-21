@@ -99,11 +99,14 @@ public class UIManager : MonoBehaviour
 	{
 		Debug.logger.Log (RankingStr);
 		Dictionary<string,object>[] RankInfo = JsonReader.Deserialize<Dictionary<string,object>[]> (RankingStr);
-		int LowestScore = int.MaxValue;
-		foreach( Dictionary<string,object> Info in RankInfo )
+		int LowestScore = 0;
+		if (RankInfo.Length >= 3) 
 		{
-			int Score = (int)Info ["score"];
-			LowestScore = Math.Min (LowestScore, Score);
+			LowestScore = int.MaxValue;
+			foreach (Dictionary<string,object> Info in RankInfo) {
+				int Score = (int)Info ["score"];
+				LowestScore = Math.Min (LowestScore, Score);
+			}
 		}
 		AchieveManager.Instance.LowestRankScore = LowestScore;
 
@@ -121,7 +124,12 @@ public class UIManager : MonoBehaviour
 
 	public void ShowNickNamePanel()
 	{
-//		_namePanel.SetActive (true);
+		_namePanel.SetActive (true);
+	}
+
+	public void HideNickNamePanel()
+	{
+		_namePanel.SetActive (false);
 	}
 
     private IEnumerator StartGame()

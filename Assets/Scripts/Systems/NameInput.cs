@@ -12,21 +12,13 @@ public class NameInput : MonoBehaviour
 
 	private void Awake()
 	{
-
-//		_inputBtn.onClick.AddListener(CheckInputName);
-	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		_inputBtn.onClick.AddListener(OnClick);
 	}
 
-	public void CheckInputName()
+	public void OnClick()
 	{
-		
+		string name = _inputText.text;
+		AchieveManager.Instance.SetNickName (name);
+		UIManager.Instance.HideNickNamePanel ();
 	}
 }
