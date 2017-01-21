@@ -2090,6 +2090,23 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 1
       value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 0
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2109,23 +2126,6 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 0
-    m_RotationOrder: 0
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 0
@@ -2387,10 +2387,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radiusData:
   - m_redMinScale: 1.5
+    m_redMaxScale: 2.5
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 2
+    m_lessGreenScale: 0.5
+  - m_redMinScale: 1.2
     m_redMaxScale: 1.5
     m_greenMinScale: 1
+    m_greenMaxScale: 1.2
+    m_lessGreenScale: 0.4
+  - m_redMinScale: 1
+    m_redMaxScale: 1
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 1.5
+    m_lessGreenScale: 0.3
+  - m_redMinScale: 1
+    m_redMaxScale: 3
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 2
+    m_lessGreenScale: 0.2
+  - m_redMinScale: 1
+    m_redMaxScale: 2.5
+    m_greenMinScale: 0.5
     m_greenMaxScale: 1
-    m_lessGreenScale: 0
+    m_lessGreenScale: 0.2
+  - m_redMinScale: 2
+    m_redMaxScale: 2
+    m_greenMinScale: 1
+    m_greenMaxScale: 2
+    m_lessGreenScale: 0.2
+  - m_redMinScale: 1
+    m_redMaxScale: 1
+    m_greenMinScale: 1
+    m_greenMaxScale: 1
+    m_lessGreenScale: 0.1
+  - m_redMinScale: 1
+    m_redMaxScale: 2
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 3
+    m_lessGreenScale: -0
+  - m_redMinScale: 1
+    m_redMaxScale: 2
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 3
+    m_lessGreenScale: -0
+  - m_redMinScale: 1
+    m_redMaxScale: 3
+    m_greenMinScale: 1
+    m_greenMaxScale: 3
+    m_lessGreenScale: -0.1
 --- !u!114 &783885000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6349,6 +6394,11 @@ Prefab:
     - target: {fileID: 1468935268561634, guid: a78f71240157940c5b929b48f700d271, type: 2}
       propertyPath: m_Name
       value: DaynamicText_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114036191836695638, guid: a78f71240157940c5b929b48f700d271,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a78f71240157940c5b929b48f700d271, type: 2}
