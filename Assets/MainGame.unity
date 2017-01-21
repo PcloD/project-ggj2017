@@ -2356,10 +2356,11 @@ MonoBehaviour:
   _lastScoreText: {fileID: 1057194190}
   _highestScoreText: {fileID: 656274393}
   _settingButton: {fileID: 1699367222}
-  _rankingButton: {fileID: 0}
+  _rankingButton: {fileID: 900831159}
   _mainGamePanel: {fileID: 157181077}
   _settingPanel: {fileID: 1384509673}
-  _rankingPanel: {fileID: 0}
+  _rankingPanel: {fileID: 2099499935}
+  _namePanel: {fileID: 1873232517}
 --- !u!4 &783884998
 Transform:
   m_ObjectHideFlags: 0
@@ -2401,9 +2402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c474c083de13a43cf8af3117496b1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSFX: {fileID: 8300000, guid: 4c534e1f211a61d4fb6a87a577a83fc6, type: 3}
+  _startSFX: {fileID: 8300000, guid: 860e800fc188be94492c15ea17b5a3c7, type: 3}
   _successSFX: {fileID: 8300000, guid: 6faf2e754bc167c43aa1664f5e8712f2, type: 3}
-  _failureSFX: {fileID: 8300000, guid: 8cccda51ecd907a4380934b641fdb8a1, type: 3}
+  _failureSFX: {fileID: 8300000, guid: a53eab87c56a4f0498aff0c2e8efbfab, type: 3}
 --- !u!114 &783885001
 MonoBehaviour:
   m_ObjectHideFlags: 0
