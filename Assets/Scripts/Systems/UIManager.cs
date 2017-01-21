@@ -23,18 +23,23 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _highestScoreText;
     [SerializeField]
-    private Button _settingButton;
+	private Button _settingButton;
+	[SerializeField]
+	private Button _rankingButton;
 
     [Header("Panels")]
     [SerializeField]
     private GameObject _mainGamePanel;
     [SerializeField]
-    private GameObject _settingPanel;
+	private GameObject _settingPanel;
+	[SerializeField]
+	private GameObject _rankingPanel;
 
     private void Awake()
     {
         _instance = this;
-        _settingButton.onClick.AddListener(OnSettingClicked);
+		_settingButton.onClick.AddListener(OnSettingClicked);
+		_rankingButton.onClick.AddListener(OnRankingClicked);
     }
 
     private void Start()
@@ -61,7 +66,8 @@ public class UIManager : MonoBehaviour
         else
         {
             if (Input.GetKeyDown(GameManager.Instance.TriggerKey) && _startText.activeSelf)
-            {
+			{
+				OnRankingClosed ();
                 StartCoroutine(StartGame());
             }
         }
@@ -79,11 +85,23 @@ public class UIManager : MonoBehaviour
         _mainGamePanel.SetActive(true);
     }
 
+	private void OnRankingClicked()
+	{
+		_rankingPanel.SetActive (true);
+		_rankingPanel.SendMessage ("ClearNameAndScore");
+	}
+
+	private void OnRankingClosed()
+	{
+		_rankingPanel.SetActive (false);
+	}
+
     private IEnumerator StartGame()
     {
         GameManager.Instance.GameReset();
         _startText.SetActive(false);
         _settingButton.gameObject.SetActive(false);
+		_rankingButton.gameObject.SetActive (false);
 
         yield return new WaitForEndOfFrame();
 
@@ -101,7 +119,8 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _startText.SetActive(true);
-        _settingButton.gameObject.SetActive(true);
+		_settingButton.gameObject.SetActive(true);
+		_rankingButton.gameObject.SetActive (true);
         _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
     }
 
