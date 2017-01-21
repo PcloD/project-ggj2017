@@ -18,8 +18,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _scoreText;
 
-    private int _score = 0;
-
     private void Awake()
     {
         _instance = this;
@@ -28,7 +26,7 @@ public class UIManager : MonoBehaviour
 
     private void OnStartGameButtonClicked()
     {
-        _score = 0;
+        GameManager.Instance.ResetGame();
         _startButton.gameObject.SetActive(false);
         _basicPattern.OnStartGame();
     }
@@ -38,9 +36,8 @@ public class UIManager : MonoBehaviour
         _startButton.gameObject.SetActive(true);
     }
 
-    public void OnGetScore()
+    public void OnScoreChanged(int score)
     {
-        _score++;
-        _scoreText.text = _score.ToString();
+        _scoreText.text = score.ToString();
     }
 }
