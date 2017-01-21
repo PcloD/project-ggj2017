@@ -37,6 +37,13 @@ public class GameManager : MonoBehaviour
     }
     private int _curStage;
 
+    public KeyCode TriggerKey
+    {
+        get { return _triggerKey; }
+        set { _triggerKey = value; }
+    }
+    private KeyCode _triggerKey = KeyCode.Space;
+
     [SerializeField] private int[] _stageScore;
     [SerializeField] private AnimationCurve[] _stagePatterns;
 

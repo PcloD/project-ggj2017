@@ -53,7 +53,7 @@ public class BasicPattern : MonoBehaviour
 
     private void OnCheckCircle()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(GameManager.Instance.TriggerKey))
         {
             if (_transform.localScale.x >= _minCheckingCircle.localScale.x && _transform.localScale.x <= _maxCheckingCircle.localScale.x)
             {
