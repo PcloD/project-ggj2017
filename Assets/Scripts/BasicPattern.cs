@@ -2,14 +2,15 @@
 
 public class BasicPattern : MonoBehaviour
 {
+    [SerializeField] private AnimationCurve _animationPattern;
     [SerializeField] private float _maxScale = 2f;
     [SerializeField] private Transform _minCheckingCircle;
     [SerializeField] private Transform _maxCheckingCircle;
-    [SerializeField] private float _scaleSpeed = 0.25f;
+    [SerializeField] private float _speed = 1.0f;
 
     private Transform _transform;
-    private bool _scaleUp = true;
     private bool _start = false;
+    private float _timer = 0;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class BasicPattern : MonoBehaviour
 
     private void Reset()
     {
-        _scaleUp = true;
+        _timer = 0;
         _start = false;
         _transform.localScale = Vector3.one * _minCheckingCircle.localScale.x;
     }
@@ -33,23 +34,12 @@ public class BasicPattern : MonoBehaviour
 
         OnCheckCircle();
 
-        if (_scaleUp)
-        {
-            _transform.localScale += Vector3.one * _scaleSpeed * Time.deltaTime;
+        _timer += Time.deltaTime * _speed;
+        _transform.localScale = (_animationPattern.Evaluate(_timer) + _minCheckingCircle.localScale.x) * Vector3.one;
 
-            if (_transform.localScale.x >= _maxScale)
-            {
-                _scaleUp = false;
-            }
-        }
-        else
+        if (_timer >= 2f)
         {
-            _transform.localScale -= Vector3.one * _scaleSpeed * Time.deltaTime;
-
-            if (_transform.localScale.x < _minCheckingCircle.localScale.x)
-            {
-                OnLossGame();
-            }
+            OnLossGame();
         }
     }
 
@@ -59,7 +49,7 @@ public class BasicPattern : MonoBehaviour
         {
             if (_transform.localScale.x >= _minCheckingCircle.localScale.x && _transform.localScale.x <= _maxCheckingCircle.localScale.x)
             {
-                _scaleUp = true;
+                _timer = 2 - _timer;
                 OnGetScore();
             }
             else
