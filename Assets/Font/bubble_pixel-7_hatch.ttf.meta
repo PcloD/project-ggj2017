@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 80da43a869fc8354abece72495dd94a1
+timeCreated: 1484968969
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bubble Pixel-7 Hatch
+  fontNames:
+  - Bubble Pixel-7 Hatch
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
