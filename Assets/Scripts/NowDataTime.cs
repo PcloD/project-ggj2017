@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 public class NowDataTime : MonoBehaviour
 {
+    [SerializeField] private DaynamicText[] _dynamicTexts;
+
 	private DateTime _dateTime;
-    private Text _text;
     private float _timer;
     private float _updateTime = 1;
+    private string _currentTime;
 
     private void Awake()
     {
-        _text = GetComponent<Text>();
-
         UpdateDateTime();
     }
 	
@@ -32,6 +32,11 @@ public class NowDataTime : MonoBehaviour
 
         _dateTime = DateTime.Now;
 
-        _text.text = string.Format("{0:d2}:{1:d2}:{2:d2}", _dateTime.Hour, _dateTime.Minute, _dateTime.Second);
+        _currentTime = string.Format("{0:d2}{1:d2}{2:d2}", _dateTime.Hour, _dateTime.Minute, _dateTime.Second);
+
+        for (int cnt = 0; cnt < _dynamicTexts.Length; cnt++)
+        {
+            _dynamicTexts[cnt].SetText(_currentTime[cnt].ToString());
+        }
     }
 }

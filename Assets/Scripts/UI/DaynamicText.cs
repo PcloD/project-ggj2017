@@ -25,6 +25,11 @@ public class DaynamicText : MonoBehaviour
 
     public void SetText(string text)
     {
+        if (_prepareText.text == text)
+        {
+            return;
+        }
+
         _displayTweener.Kill();
         _prepareTweener.Kill();
         StopCoroutine(ResetText());
