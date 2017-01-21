@@ -2,15 +2,14 @@
 
 public class BasicPattern : MonoBehaviour
 {
-    [SerializeField] private float _maxScale = 2f;
     [SerializeField] private Transform _minCheckingCircle;
     [SerializeField] private Transform _maxCheckingCircle;
     [SerializeField] private float _speed = 1.0f;
+    [SerializeField] private GameObject _clickEffect;
 
     private Transform _transform;
     private bool _start = false;
     private float _timer = 0;
-    private int _currentStage = 0;
     private AnimationCurve _curPattern;
 
     private void Awake()
@@ -27,7 +26,6 @@ public class BasicPattern : MonoBehaviour
     {
         _timer = 0;
         _start = false;
-        _currentStage = 0;
         _transform.localScale = Vector3.one * _minCheckingCircle.localScale.x;
         _curPattern = GameManager.Instance.GetCurrentPattern();
     }
@@ -70,17 +68,29 @@ public class BasicPattern : MonoBehaviour
     {
         GameManager.Instance.AddScore();
         _curPattern = GameManager.Instance.GetCurrentPattern();
+
+        CreateClickEffect(Color.white);
     }
 
     private void OnLossGame()
     {
         _start = false;
         UIManager.Instance.OnLossGame();
+
+        CreateClickEffect(Color.red);
     }
 
     public void OnStartGame()
     {
         Reset();
         _start = true;
+    }
+
+    private void CreateClickEffect(Color color)
+    {
+        GameObject clickEffect = Instantiate(_clickEffect);
+        clickEffect.transform.SetParent(_transform);
+        clickEffect.transform.localPosition = Vector3.zero;
+        clickEffect.GetComponent<ClickEffect>().Initialize(color);
     }
 }

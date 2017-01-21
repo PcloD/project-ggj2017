@@ -1,22 +1,37 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NowDataTime : MonoBehaviour {
+public class NowDataTime : MonoBehaviour
+{
+	private DateTime _dateTime;
+    private Text _text;
+    private float _timer;
+    private float _updateTime = 1;
 
-	private DateTime Now;
-	[SerializeField]private Text _DataTimeText;
-	void Start () 
-	{
+    private void Awake()
+    {
+        _text = GetComponent<Text>();
 
-	}
+        UpdateDateTime();
+    }
 	
-	void Update () 
+    private void Update () 
 	{
-		Now = DateTime.Now;
-		_DataTimeText.text = Now.Hour + ":" + Now.Minute + ":" + Now.Second;
-		//Debug.Log (Now.Hour+":"+Now.Minute+":"+Now.Second);
+        _timer += Time.deltaTime;
+
+        if (_timer >= _updateTime)
+        {
+            UpdateDateTime();
+        }
 	}
+
+    private void UpdateDateTime()
+    {
+        _timer = 0;
+
+        _dateTime = DateTime.Now;
+
+        _text.text = string.Format("{0:d2}:{1:d2}:{2:d2}", _dateTime.Hour, _dateTime.Minute, _dateTime.Second);
+    }
 }
