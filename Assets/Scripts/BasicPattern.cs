@@ -16,6 +16,10 @@ public class BasicPattern : MonoBehaviour
     private void Awake()
     {
         _transform = transform;
+    }
+
+    private void Start()
+    {
         Reset();
     }
 
