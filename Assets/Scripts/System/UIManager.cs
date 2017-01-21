@@ -37,6 +37,11 @@ public class UIManager : MonoBehaviour
         _settingButton.onClick.AddListener(OnSettingClicked);
     }
 
+    private void Start()
+    {
+        _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
+    }
+
     private void Update()
     {
         if (_settingPanel.activeInHierarchy)
@@ -96,6 +101,7 @@ public class UIManager : MonoBehaviour
 
         _startText.SetActive(true);
         _settingButton.gameObject.SetActive(true);
+        _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
     }
 
     public void OnScoreChanged(int score)
