@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
 	private GameObject _settingPanel;
 	[SerializeField]
 	private GameObject _rankingPanel;
+	[SerializeField]
+	private GameObject _namePanel;
 
     private void Awake()
     {
@@ -115,6 +117,11 @@ public class UIManager : MonoBehaviour
 	private void OnRankingClosed()
 	{
 		_rankingPanel.SetActive (false);
+	}
+
+	public void ShowNickNamePanel()
+	{
+//		_namePanel.SetActive (true);
 	}
 
     private IEnumerator StartGame()

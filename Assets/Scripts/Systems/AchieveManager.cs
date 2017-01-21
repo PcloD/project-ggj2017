@@ -50,7 +50,7 @@ public class AchieveManager
 
 		if (!PlayerPrefs.HasKey (NICK_NAME)) 
 		{
-			ShowNickNamePanel ();
+			UIManager.Instance.ShowNickNamePanel ();
 		}
 	}
 
@@ -85,11 +85,6 @@ public class AchieveManager
 	public string GetNickName()
 	{
 		return PlayerPrefs.GetString (NICK_NAME);
-	}
-
-	private void ShowNickNamePanel()
-	{
-		
 	}
 
 }
