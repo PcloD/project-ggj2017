@@ -145,7 +145,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e7daae0008bc1694f988a38549cb63a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb706e7a24b11cd4e990912e72999b08, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicPattern: {fileID: 1110411146}
-  _startButton: {fileID: 658275439}
+  _startText: {fileID: 0}
   _scoreText: {fileID: 591868587}
 --- !u!4 &823108593
 Transform:
@@ -858,24 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1f2a4003cb04322ba445def731fb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationPattern:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-    m_PreInfinity: 2
-    m_PostInfinity: 0
-    m_RotationOrder: 0
   _maxScale: 2
   _minCheckingCircle: {fileID: 1642063914}
   _maxCheckingCircle: {fileID: 405591832}
@@ -899,7 +881,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 381d1db830c46e944880b33d223a8955, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3f46345766646243a0ede3d70f0971e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1096,7 +1078,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e7daae0008bc1694f988a38549cb63a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb706e7a24b11cd4e990912e72999b08, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
