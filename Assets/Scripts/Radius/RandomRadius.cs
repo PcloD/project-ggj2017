@@ -29,7 +29,7 @@ public abstract class RandomRadius
 	/**取得下次綠圓圈的scale*/
 	public float GetGreenScale()
 	{
-		return 1.0f;
+		return RandomFloat( GreenMaxScale - GreenMinScale ) + GreenMinScale;
 	}
 
 	private float RandomFloat(float Range)
