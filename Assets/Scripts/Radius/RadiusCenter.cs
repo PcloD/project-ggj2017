@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 /**隨機scale管理器*/
 public class RadiusCenter 
 {
-	private static RadiusCenter Instance = null;
+	private static RadiusCenter _Instance = null;
+	public static RadiusCenter Instance
+	{
+		get 
+		{
+			if (_Instance == null) 
+			{
+				_Instance = new RadiusCenter ();
+			}
+
+			return _Instance;
+		}
+	}
 
 	/**隨機難度層級*/
 	private enum LEVEL
@@ -13,6 +26,8 @@ public class RadiusCenter
 		ONE,
 		TWO,
 		THREE,
+		FOUR,
+		FIVE,
 
 		MAX,
 	}
@@ -21,21 +36,12 @@ public class RadiusCenter
 	/**當前難度層級*/
 	private RandomRadius CurrentLevel = null;
 
-	public static RadiusCenter GetInstance()
-	{
-		if (Instance == null) 
-		{
-			Instance = new RadiusCenter ();
-		}
-
-		return Instance;
-	}
-
+	/**singleton建構子*/
 	private RadiusCenter()
 	{
 		LevelInfo = new Dictionary<LEVEL, RandomRadius> ();
 
-		 LevelInfo.Add (LEVEL.ONE, new Level1 ());
+		LevelInfo.Add (LEVEL.ONE, new Level1 ());
 
 		SetLevel(0);
 	}
@@ -57,18 +63,33 @@ public class RadiusCenter
 			return;
 		}
 
-		CurrentLevel = LevelInfo [LEVEL.ONE];
+		CurrentLevel = LevelInfo[LEVEL.ONE];
+	}
+
+	/**取得三個圈圈的scale (紅, 綠, 白)*/
+	public Vector3 GetScales()
+	{
+		Vector3 result = new Vector3 ( GetRedScale(), GetGreenScale(), GetWhiteScale() );
+		return result;
 	}
 
 	/**取得紅圈圈的scale*/
-	public float GetRedScale()
+	private float GetRedScale()
 	{
 		return CurrentLevel.GetRedScale();
 	}
 
 	/**取得綠圈圈的scale*/
-	public float GetGreenScale()
+	private float GetGreenScale()
 	{
 		return CurrentLevel.GetGreenScale();
 	}
+
+	/**取得白圈圈的scale
+	*  因為白的要比綠的小 所以要先拿綠的*/
+	private float GetWhiteScale()
+	{
+		return CurrentLevel.GetWhiteScale();
+	}
+
 }

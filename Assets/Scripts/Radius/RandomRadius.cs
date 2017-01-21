@@ -8,6 +8,9 @@ public abstract class RandomRadius
 	protected float RedMaxScale;
 	protected float GreenMinScale;
 	protected float GreenMaxScale;
+	protected float LessGreenScale;
+
+	private float CurGreenScale;
 
 	private Random Rand = new Random();
 
@@ -18,6 +21,8 @@ public abstract class RandomRadius
 		GreenMinScale = 1.0f;
 		GreenMaxScale = 1.0f;
 
+		LessGreenScale = 0.0f;
+		CurGreenScale = 0.0f;
 	}
 
 	/**取得下次紅圓圈的scale*/
@@ -29,7 +34,24 @@ public abstract class RandomRadius
 	/**取得下次綠圓圈的scale*/
 	public float GetGreenScale()
 	{
-		return RandomFloat( GreenMaxScale - GreenMinScale ) + GreenMinScale;
+		CurGreenScale = RandomFloat( GreenMaxScale - GreenMinScale ) + GreenMinScale;
+		return CurGreenScale;
+	}
+
+	/**取得下次白圓圈的scale*/
+	public float GetWhiteScale()
+	{
+		if (CurGreenScale <= 0.0f) 
+		{
+			return 0.25f;
+		}
+
+		// 算出要比綠圈小多少
+		float LessScale =  RandomFloat( LessGreenScale ) + 0.25f;
+		float result = CurGreenScale - LessScale;
+		CurGreenScale = 0.0f;
+
+		return result;
 	}
 
 	private float RandomFloat(float Range)
