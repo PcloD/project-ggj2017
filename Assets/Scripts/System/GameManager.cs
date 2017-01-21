@@ -22,7 +22,15 @@ public class GameManager : MonoBehaviour
     }
     private int _score;
 
-    public int CurStage { get { return _curStage; } }
+    public int CurStage
+    {
+        get { return _curStage; }
+        set
+        {
+            _curStage = value;
+            RadiusDataManager.Instance.SetLevel(_curStage);
+        }
+    }
     private int _curStage;
 
     [SerializeField] private int[] _stageScore;
@@ -30,16 +38,13 @@ public class GameManager : MonoBehaviour
 
     public void AddScore()
     {
-        _score++;
+        Score++;
 
-        if (_score >= _stageScore[_curStage])
+        if (Score >= _stageScore[CurStage])
         {
-            _curStage++;
-
-            if (_curStage > _stageScore.Length - 1)
+            if(CurStage != _stageScore.Length - 1)
             {
-                _curStage = _stageScore.Length - 1;
-				RadiusCenter.Instance.SetLevel (_curStage);
+                CurStage++;
             }
         }
 
@@ -53,10 +58,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        _curStage = 0;
-        _score = 0;
+        CurStage = 0;
+        Score = 0;
 
-		RadiusCenter.Instance.SetLevel (_curStage);
+        RadiusDataManager.Instance.SetLevel (_curStage);
         UIManager.Instance.OnScoreChanged(_score);
     }
 }
