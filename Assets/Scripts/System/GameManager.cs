@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
             if (_curStage > _stageScore.Length - 1)
             {
                 _curStage = _stageScore.Length - 1;
+				RadiusCenter.Instance.SetLevel (_curStage);
             }
         }
 
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         _curStage = 0;
         _score = 0;
 
+		RadiusCenter.Instance.SetLevel (_curStage);
         UIManager.Instance.OnScoreChanged(_score);
     }
 }

@@ -77,6 +77,9 @@ public class BasicPattern : MonoBehaviour
         _start = false;
         UIManager.Instance.OnLossGame();
 
+		AchieveManager.Instance.SetHightestScore (GameManager.Instance.Score);
+
+
         CreateClickEffect(Color.red);
     }
 
