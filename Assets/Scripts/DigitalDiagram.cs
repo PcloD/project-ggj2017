@@ -13,6 +13,7 @@ public class DigitalDiagram : MonoBehaviour
 
     [SerializeField] private int _sliceNumber = 400;
     [SerializeField] private int _amplitudeMultiplier = 10;
+    [SerializeField] private float _randomAmplitude = 0.3f;
 
     private float _distance = 100;
 
@@ -40,6 +41,7 @@ public class DigitalDiagram : MonoBehaviour
     private void Update()
     {
         _inverse = GameManager.Instance.Score % 2 == 0 ? 1 : -1;
+
         UpdateAmplitude(_inverse * (_basicPattern.localScale.x - _minCheckingCircle.localScale.x));
     }
 
@@ -50,7 +52,7 @@ public class DigitalDiagram : MonoBehaviour
             _vertices[cnt].y = _vertices[cnt + 1].y;
         }
 
-        _vertices[_sliceNumber - 1].y = latestAmplitude * _amplitudeMultiplier;
+        _vertices[_sliceNumber - 1].y = latestAmplitude * _amplitudeMultiplier * ( 1 + Random.Range(-_randomAmplitude, _randomAmplitude));
         _lineRenderer.SetPositions(_vertices);
     }
 }
