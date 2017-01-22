@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour
 	private GameObject _rankingPanel;
 	[SerializeField]
 	private GameObject _namePanel;
+	[SerializeField]
+	private GameObject _introPanel;
 
     [SerializeField]
     private GameOverEffect _gameOverEffect;
@@ -59,6 +61,8 @@ public class UIManager : MonoBehaviour
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
 		_audioButton.onClick.AddListener(OnAudioClicked);
+		_googlePlayButton.onClick.AddListener(OnGooglePlayClicked);
+		_introButton.onClick.AddListener(OnIntroClicked);
 
         #if !(UNITY_ANDROID || UNITY_IPHONE) || UNITY_EDITOR
         _googlePlayButton.onClick.AddListener(OnGooglePlayClicked);
@@ -131,6 +135,11 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+		if (_introPanel.activeSelf)
+		{
+			_introPanel.SetActive(false);
+			return;
+		}
         #if (UNITY_ANDROID || UNITY_IPHONE) && !UNITY_EDITOR
         StartCoroutine(StartGame());
         #endif
@@ -225,6 +234,15 @@ public class UIManager : MonoBehaviour
     {
         Application.OpenURL("https://play.google.com/store/apps/details?id=com.ggj2017twh.dontdie");
     }
+
+	public void OnIntroClicked()
+	{
+		_introPanel.SetActive (true);
+	}
+	public void OnIntroClose()
+	{
+		_introPanel.SetActive (false);
+	}
 
 	public void ShowNickNamePanel()
 	{

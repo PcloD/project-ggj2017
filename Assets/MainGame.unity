@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1313,13 +1313,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1623148052590068, guid: 35dd5917f3466804a9c36d13902bdff8, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35dd5917f3466804a9c36d13902bdff8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &443077274 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1623148052590068, guid: 35dd5917f3466804a9c36d13902bdff8,
+    type: 2}
+  m_PrefabInternal: {fileID: 443077273}
 --- !u!1 &450154865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,6 +2952,11 @@ Prefab:
       propertyPath: _googlePlayButton
       value: 
       objectReference: {fileID: 1050280171}
+    - target: {fileID: 114664866755433582, guid: 75a63bd6d1a284e0b909776e37fc33bc,
+        type: 2}
+      propertyPath: _introPanel
+      value: 
+      objectReference: {fileID: 443077274}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75a63bd6d1a284e0b909776e37fc33bc, type: 2}
   m_IsPrefabParent: 0

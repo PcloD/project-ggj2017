@@ -152,14 +152,13 @@ GameObject:
   - component: {fileID: 224556239598251448}
   - component: {fileID: 222409047160694006}
   - component: {fileID: 114033864053877288}
-  - component: {fileID: 114280083459948424}
   m_Layer: 5
   m_Name: Developers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1804063077282934
 GameObject:
   m_ObjectHideFlags: 1
@@ -271,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.627451}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -318,20 +317,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: we are
---- !u!114 &114280083459948424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623148052590068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e1760551ab844cab3f76b46e6ebd8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rankName: {fileID: 114912902311515398}
-  _rankScore: {fileID: 0}
-  _closeButton: {fileID: 0}
 --- !u!114 &114387460521618896
 MonoBehaviour:
   m_ObjectHideFlags: 1
