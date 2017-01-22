@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
 	[SerializeField]
 	private GameObject _namePanel;
 
+    [SerializeField]
+    private GameOverEffect _gameOverEffect;
     private void Awake()
     {
         _instance = this;
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
         _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _startText.gameObject.AddComponent<RectTransformScaleShowHide>();
+        _gameOverEffect.onEffectCompleteCallback = OnGameOverEffectComplete;
     }
 
     private void Start()
@@ -138,6 +141,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
+        _gameOverEffect.ResetGameOverEffect();
         GameManager.Instance.GameReset();
         //_startText.SetActive(false);
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
@@ -159,6 +163,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator LossGame()
     {
+        _gameOverEffect.StartGameOverEffect();
         yield return new WaitForSeconds(1.0f);
 
         //_startText.SetActive(true);
@@ -173,5 +178,10 @@ public class UIManager : MonoBehaviour
     public void OnScoreChanged(int score)
     {
         _lastScoreText.text = score.ToString();
+    }
+
+    private void OnGameOverEffectComplete()
+    {
+        _gameOverEffect.ResetGameOverEffect();
     }
 }
