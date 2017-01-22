@@ -70,9 +70,9 @@ public class UIManager : MonoBehaviour
         _lastDynamicScoreGroup.SetText("0");
         _highestDynamicScoreGroup.SetText(AchieveManager.Instance.GetHightestScore().ToString());
 
-        _lastTitle.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
+        _lastTitle.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
         _highestTitle.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
+        _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour
         _gameOverEffect.ResetGameOverEffect();
         GameManager.Instance.GameReset();
 
-        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Hide();
+        _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Hide();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
@@ -201,7 +201,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.75f);
 
-        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
+        _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
