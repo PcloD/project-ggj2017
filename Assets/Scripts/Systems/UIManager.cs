@@ -59,10 +59,10 @@ public class UIManager : MonoBehaviour
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
 		_audioButton.onClick.AddListener(OnAudioClicked);
-        _googlePlayButton.onClick.AddListener(OnGooglePlayClicked);
 
-        #if (UNITY_ANDROID || UNITY_IPHONE) && !UNITY_EDITOR
-        _googlePlayButton.gameObject.SetActive(false);
+        #if !(UNITY_ANDROID || UNITY_IPHONE) || UNITY_EDITOR
+        _googlePlayButton.onClick.AddListener(OnGooglePlayClicked);
+        _googlePlayButton.gameObject.SetActive(true);
         #endif
 
         _lastTitle.AddComponent<RectTransformScaleShowHide>();
@@ -88,7 +88,10 @@ public class UIManager : MonoBehaviour
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+
+        #if !(UNITY_ANDROID || UNITY_IPHONE) || UNITY_EDITOR
         _googlePlayButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
+        #endif
 
         UpdateSettingAndAudioButtons(true);
     }
@@ -148,6 +151,7 @@ public class UIManager : MonoBehaviour
     private void UpdateSettingAndAudioButtons(bool show)
 	{
         #if !UNITY_EDITOR
+        _settingButton.gameObject.SetActive(false);
         _audioButton.gameObject.SetActive(!show);
 
         if(show)
@@ -159,7 +163,8 @@ public class UIManager : MonoBehaviour
             _audioButton.gameObject.GetComponent<RectTransformScaleShowHide>().Hide();
         }
         #else
-        _audioButton.gameObject.SetActive(!show);
+        _audioButton.gameObject.SetActive(false);
+        _settingButton.gameObject.SetActive(!show);
 
         if(show)
         {
@@ -240,7 +245,10 @@ public class UIManager : MonoBehaviour
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+
+        #if !(UNITY_ANDROID || UNITY_IPHONE) || UNITY_EDITOR
         _googlePlayButton.gameObject.GetComponent<RectTransformScaleShowHide>().Hide();
+        #endif
 
         UpdateSettingAndAudioButtons(false);
 
@@ -265,7 +273,10 @@ public class UIManager : MonoBehaviour
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+
+        #if !(UNITY_ANDROID || UNITY_IPHONE) || UNITY_EDITOR
         _googlePlayButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
+        #endif
 
         UpdateSettingAndAudioButtons(true);
 
