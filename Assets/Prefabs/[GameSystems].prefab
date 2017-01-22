@@ -71,7 +71,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicPattern: {fileID: 0}
   _startText: {fileID: 0}
+  _lastTitle: {fileID: 0}
   _lastDynamicScoreGroup: {fileID: 0}
+  _highestTitle: {fileID: 0}
   _highestDynamicScoreGroup: {fileID: 0}
   _fullScreenButton: {fileID: 0}
   _settingButton: {fileID: 0}
@@ -93,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7af067b858b9465cb5bbed9fe86575e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageScore: 0a000000140000002800000064000000c800000090010000e8030000d0070000a00f000010270000
+  _stageScore: 14000000280000003c0000005000000064000000c8000000900100005802000020030000e7030000
   _stagePatterns:
   - serializedVersion: 2
     m_Curve:
