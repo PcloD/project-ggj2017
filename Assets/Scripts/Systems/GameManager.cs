@@ -39,8 +39,15 @@ public class GameManager : MonoBehaviour
 
     public KeyCode TriggerKey
     {
-        get { return _triggerKey; }
-        set { _triggerKey = value; }
+        get
+        {
+            #if (UNITY_ANDROID || UNITY_IPHONE) && !UNITY_EDITOR
+            return KeyCode.Mouse0;
+            #else
+            return _triggerKey;
+            #endif
+        }
+        set {_triggerKey = value; }
     }
     private KeyCode _triggerKey = KeyCode.Space;
 

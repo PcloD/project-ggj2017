@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        #if UNITY_ANDROID || UNITY_IPHONE
+        #if (UNITY_ANDROID || UNITY_IPHONE) && !UNITY_EDITOR
         StartCoroutine(StartGame());
         #endif
     }
