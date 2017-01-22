@@ -13,27 +13,9 @@ public class DynamicTextGroup : MonoBehaviour
 
     private RectTransform _rectTransform;
 
-    public string test;
-    private float _timer;
-    public float time;
-    public int count;
-
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
-
-        SetText(test);
-    }
-
-    public void Update()
-    {
-        _timer += Time.deltaTime;
-        if (_timer >= time)
-        {
-            _timer = 0;
-            count++;
-            SetText(count.ToString());
-        }
     }
 
     public void SetText(string text)
@@ -54,6 +36,7 @@ public class DynamicTextGroup : MonoBehaviour
             _dynamicTexts.Add(Instantiate<DynamicText>(_dynamicTexts[0]));
             _dynamicTexts[_dynamicTexts.Count - 1].transform.SetParent(_rectTransform);
             _dynamicTexts[_dynamicTexts.Count - 1].transform.localScale = Vector3.one;
+            _dynamicTexts[_dynamicTexts.Count - 1].transform.localPosition = Vector3.zero;
         }
 
         for (int cnt = 0; cnt < _dynamicTexts.Count; cnt++)

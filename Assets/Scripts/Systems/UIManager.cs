@@ -20,9 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _startText;
     [SerializeField]
-    private Text _lastScoreText;
+    private DynamicTextGroup _lastDynamicScoreGroup;
     [SerializeField]
-    private Text _highestScoreText;
+    private DynamicTextGroup _highestDynamicScoreGroup;
     [SerializeField]
 	private Button _settingButton;
 	[SerializeField]
@@ -54,7 +54,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
+        _lastDynamicScoreGroup.SetText("0");
+        _highestDynamicScoreGroup.SetText(AchieveManager.Instance.GetHightestScore().ToString());
     }
 
     private void Update()
@@ -172,12 +173,12 @@ public class UIManager : MonoBehaviour
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         //_rankingButton.gameObject.SetActive (true);
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        _highestScoreText.text = AchieveManager.Instance.GetHightestScore().ToString();
+        _highestDynamicScoreGroup.SetText(AchieveManager.Instance.GetHightestScore().ToString());
     }
 
     public void OnScoreChanged(int score)
     {
-        _lastScoreText.text = score.ToString();
+        _lastDynamicScoreGroup.SetText(score.ToString());
     }
 
     private void OnGameOverEffectComplete()
