@@ -122,9 +122,6 @@ public class BasicPattern : MonoBehaviour
     private void UpdateRadius()
     {
         _currentRadius = RadiusDataManager.Instance.GetScales();
-        //_maxCheckingCircle.transform.localScale = Vector3.one * _currentRadius.y;
-        //_minCheckingCircle.transform.localScale = Vector3.one * _currentRadius.z;
-		//LerpChangScale();
 		_isLerpRedius = true;
     }
 		
@@ -139,11 +136,6 @@ public class BasicPattern : MonoBehaviour
 				_isLerpRedius = false;
 			}
 		}
-
-
-
-
-
 	}
 
 
