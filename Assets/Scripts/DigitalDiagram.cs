@@ -20,6 +20,7 @@ public class DigitalDiagram : MonoBehaviour
     private LineRenderer _lineRenderer;
     private Vector3[] _vertices;
     private float _inverse = 1;
+    public bool Noise;
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class DigitalDiagram : MonoBehaviour
             _vertices[cnt].y = _vertices[cnt + 1].y;
         }
 
-        _vertices[_sliceNumber - 1].y = latestAmplitude * _amplitudeMultiplier * ( 1 + Random.Range(-_randomAmplitude, _randomAmplitude));
+        _vertices[_sliceNumber - 1].y = latestAmplitude * _amplitudeMultiplier * ( Noise? (1 + Random.Range(-_randomAmplitude, _randomAmplitude)) : 1 );
         _lineRenderer.SetPositions(_vertices);
     }
 }
