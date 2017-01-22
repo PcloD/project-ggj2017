@@ -83,9 +83,10 @@ public class UIManager : MonoBehaviour
         _highestTitle.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        //_settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+		this.SetSettingButtinActive (true);
     }
 
     private void Update()
@@ -195,7 +196,8 @@ public class UIManager : MonoBehaviour
 
 	public void OnAudioClicked()
 	{
-		this.SendMessage ("OnAudioClicked");
+//		this.SendMessage ("OnAudioClicked");
+		_audioButton.SendMessage ("OnAudioClicked");
 	}
 
 	public void ShowNickNamePanel()

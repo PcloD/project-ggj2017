@@ -35,13 +35,19 @@ public class AudioButton : MonoBehaviour
 	private void SetImage( bool IsOn )
 	{
 		_AudioOn.SetActive (IsOn);
-		_AudioOff.SetActive (!IsOn);	
+		_AudioOff.SetActive (!IsOn);
+
+		if (IsOn) 
+		{
+			
+		}
 	}
 
 	public void OnAudioClicked()
 	{
+		Debug.logger.Log ("OnAudioClicked");
 		bool audioOn = IsAudioOn ();
-		SetImage (audioOn);
+		SetImage (!audioOn);
 		SetAudioOn (!audioOn);
 	}
 }
