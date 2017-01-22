@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 	private Button _settingButton;
 	[SerializeField]
 	private Button _rankingButton;
+    [SerializeField]
+    private Button _introButton;
 
     [Header("Panels")]
     [SerializeField]
@@ -49,6 +51,7 @@ public class UIManager : MonoBehaviour
         _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _startText.gameObject.AddComponent<RectTransformScaleShowHide>();
+        _introButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _gameOverEffect.onEffectCompleteCallback = OnGameOverEffectComplete;
     }
 
@@ -144,12 +147,11 @@ public class UIManager : MonoBehaviour
     {
         _gameOverEffect.ResetGameOverEffect();
         GameManager.Instance.GameReset();
-        //_startText.SetActive(false);
+
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
-        //_settingButton.gameObject.SetActive(false);
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
-        //_rankingButton.gameObject.SetActive (false);
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+        _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
 
         yield return new WaitForEndOfFrame();
 
@@ -167,12 +169,11 @@ public class UIManager : MonoBehaviour
         _gameOverEffect.StartGameOverEffect();
         yield return new WaitForSeconds(1.0f);
 
-        //_startText.SetActive(true);
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        //_settingButton.gameObject.SetActive(true);
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        //_rankingButton.gameObject.SetActive (true);
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+
         _highestDynamicScoreGroup.SetText(AchieveManager.Instance.GetHightestScore().ToString());
     }
 
