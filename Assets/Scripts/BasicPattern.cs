@@ -13,6 +13,8 @@ public class BasicPattern : MonoBehaviour
     private float _timer = 0;
     private AnimationCurve _curPattern;
     private Vector3 _currentRadius;
+	private bool _isLerpRedius = false;
+
 
     private void Awake()
     {
@@ -112,11 +114,8 @@ public class BasicPattern : MonoBehaviour
         //_minCheckingCircle.transform.localScale = Vector3.one * _currentRadius.z;
 		//LerpChangScale();
 		_isLerpRedius = true;
-		Debug.Log ("[Jimyo]");
     }
-
-
-	private bool _isLerpRedius = false;
+		
 	private void LerpChangScale()
 	{
 		if (_isLerpRedius == true) 
