@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        #if UNITY_EDITOR
         if (_settingPanel.activeInHierarchy)
         {
             if (Input.anyKeyDown)
@@ -102,6 +103,7 @@ public class UIManager : MonoBehaviour
                 StartCoroutine(StartGame());
             }
         }
+        #endif
     }
 
     private void OnFullscreenButtonClicked()
