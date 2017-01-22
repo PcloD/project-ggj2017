@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
     public void UpdateVolumn()
     {
         _volumn = PlayerPrefs.GetInt("AUDIO_ON", 1);
-        _BGM.volume = _volumn;
+        _BGM.volume = _volumn == 1 ? 0.3f : 0;
     }
 
     public void OnStartButtonClicked()
