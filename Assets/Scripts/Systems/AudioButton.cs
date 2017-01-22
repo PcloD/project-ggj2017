@@ -14,10 +14,10 @@ public class AudioButton : MonoBehaviour
 	private static readonly string AUDIO_ON = "AUDIO_ON";
 	public void Start()
 	{
-		if (PlayerPrefs.HasKey (AUDIO_ON)) 
-		{
-			PlayerPrefs.SetInt (AUDIO_ON, 1);
-		}
+        if (!PlayerPrefs.HasKey(AUDIO_ON))
+        {
+            PlayerPrefs.SetInt(AUDIO_ON, 1);
+        }
 
 		SetImage (IsAudioOn());
 	}
