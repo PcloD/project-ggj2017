@@ -20,7 +20,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _startText;
     [SerializeField]
+    private GameObject _lastTitle;
+    [SerializeField]
     private DynamicTextGroup _lastDynamicScoreGroup;
+    [SerializeField]
+    private GameObject _highestTitle;
     [SerializeField]
     private DynamicTextGroup _highestDynamicScoreGroup;
     [SerializeField]
@@ -51,6 +55,8 @@ public class UIManager : MonoBehaviour
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
 
+        _lastTitle.AddComponent<RectTransformScaleShowHide>();
+        _highestTitle.AddComponent<RectTransformScaleShowHide>();
         _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
@@ -63,6 +69,14 @@ public class UIManager : MonoBehaviour
     {
         _lastDynamicScoreGroup.SetText("0");
         _highestDynamicScoreGroup.SetText(AchieveManager.Instance.GetHightestScore().ToString());
+
+        _lastTitle.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
+        _highestTitle.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
+        _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
     }
 
     private void Update()
