@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RankingControl : MonoBehaviour {
 
@@ -8,7 +9,14 @@ public class RankingControl : MonoBehaviour {
 	private RankName _rankName;
 	[SerializeField]
 	private RankScore _rankScore;
+	[SerializeField]
+	private Button _closeButton;
 
+
+	public void Awake()
+	{
+		_closeButton.onClick.AddListener(OnClicked);
+	}
 	public void ClearNameAndScore()
 	{
 		_rankName.ClearNameAndScore ();
@@ -19,5 +27,10 @@ public class RankingControl : MonoBehaviour {
 	{
 		_rankName.SetNameAndScore (serverData);
 		_rankScore.SetNameAndScore (serverData);
+	}
+
+	public void OnClicked()
+	{
+		UIManager.Instance.OnRankingClosed ();
 	}
 }

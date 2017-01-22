@@ -124,7 +124,7 @@ public class UIManager : MonoBehaviour
 		_rankingPanel.SendMessage ( "SetNameAndScore", RankInfo );
 	}
 
-	private void OnRankingClosed()
+	public void OnRankingClosed()
 	{
 		_rankingPanel.SetActive (false);
 	}
