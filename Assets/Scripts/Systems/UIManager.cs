@@ -174,6 +174,11 @@ public class UIManager : MonoBehaviour
 
 	private void OnRankingClicked()
 	{
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            return;
+        }
+
 		_rankingPanel.SetActive (true);
 		_rankingPanel.SendMessage ("ClearNameAndScore");
 		HttpRequestManager.Instance.Download ();
