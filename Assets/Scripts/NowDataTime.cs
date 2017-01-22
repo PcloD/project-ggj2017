@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class NowDataTime : MonoBehaviour
 {
-    [SerializeField] private DaynamicText[] _dynamicTexts;
+    [SerializeField] private DynamicText[] _dynamicTexts;
 
 	private DateTime _dateTime;
     private float _timer;

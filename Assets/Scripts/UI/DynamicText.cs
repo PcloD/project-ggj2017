@@ -3,25 +3,19 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
 
-public class DaynamicText : MonoBehaviour
+public class DynamicText : MonoBehaviour
 {
+    public float Distance { set { _distance = value; } }
+    public float Duration { set { _duration = value; } }
+
     [SerializeField] private Text _displayText;
     [SerializeField] private Text _prepareText;
-    [SerializeField] private float _distance = 300;
-    [SerializeField] private float _duration = 0.5f;
 
+    private float _distance = 300;
+    private float _duration = 0.5f;
     private int _count;
     private Tweener _displayTweener;
     private Tweener _prepareTweener;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _count++;
-            SetText(_count.ToString());
-        }
-    }
 
     public void SetText(string text)
     {
