@@ -84,7 +84,7 @@ public class BasicPattern : MonoBehaviour
         UIManager.Instance.OnLossGame();
 
 		AchieveManager.Instance.SetHightestScore (GameManager.Instance.Score);
-        HttpRequestManager.Instance.Upload(SystemInfo.deviceUniqueIdentifier, GameManager.Instance.Score.ToString());
+		HttpRequestManager.Instance.Upload(AchieveManager.Instance.GetNickName(), GameManager.Instance.Score.ToString());
 
         CreateClickEffect(false);
     }
