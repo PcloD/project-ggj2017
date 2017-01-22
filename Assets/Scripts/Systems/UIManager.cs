@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private DynamicTextGroup _highestDynamicScoreGroup;
     [SerializeField]
+    private Button _fullScreenButton;
+    [SerializeField]
 	private Button _settingButton;
 	[SerializeField]
 	private Button _rankingButton;
@@ -45,9 +47,11 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        _fullScreenButton.onClick.AddListener(OnFullscreenButtonClicked);
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
 
+        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _startText.gameObject.AddComponent<RectTransformScaleShowHide>();
@@ -67,9 +71,9 @@ public class UIManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {   
-                foreach(KeyCode keycode in Enum.GetValues(typeof(KeyCode)))
+                foreach (KeyCode keycode in Enum.GetValues(typeof(KeyCode)))
                 {
-                    if(Input.GetKeyDown(keycode))
+                    if (Input.GetKeyDown(keycode))
                     {
                         GameManager.Instance.TriggerKey = keycode;
                         OnSettingClosed();
@@ -77,14 +81,26 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        else
+        else if(!_rankingPanel.activeInHierarchy)
         {
             if (Input.GetKeyDown(GameManager.Instance.TriggerKey) && _startText.activeSelf)
 			{
-				OnRankingClosed ();
                 StartCoroutine(StartGame());
             }
         }
+    }
+
+    private void OnFullscreenButtonClicked()
+    {
+        if (_rankingPanel.activeSelf)
+        {
+            _rankingPanel.SetActive(false);
+            return;
+        }
+
+        #if UNITY_ANDROID || UNITY_IPHONE
+        StartCoroutine(StartGame());
+        #endif
     }
 
     private void OnSettingClicked()
@@ -148,6 +164,7 @@ public class UIManager : MonoBehaviour
         _gameOverEffect.ResetGameOverEffect();
         GameManager.Instance.GameReset();
 
+        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Hide();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
@@ -169,6 +186,7 @@ public class UIManager : MonoBehaviour
         _gameOverEffect.StartGameOverEffect();
         yield return new WaitForSeconds(1.0f);
 
+        _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
