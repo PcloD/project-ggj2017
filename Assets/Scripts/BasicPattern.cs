@@ -55,7 +55,7 @@ public class BasicPattern : MonoBehaviour
     {
         if (Input.GetKeyDown(GameManager.Instance.TriggerKey))
         {
-            if (_transform.localScale.x >= _minCheckingCircle.localScale.x && _transform.localScale.x <= _maxCheckingCircle.localScale.x)
+            if (_transform.localScale.x >= _minCheckingCircle.localScale.x -0.1f && _transform.localScale.x <= _maxCheckingCircle.localScale.x+0.1f)
             {
                 _timer = 2 - _timer;
                 OnGetScore();
@@ -84,7 +84,7 @@ public class BasicPattern : MonoBehaviour
         UIManager.Instance.OnLossGame();
 
 		AchieveManager.Instance.SetHightestScore (GameManager.Instance.Score);
-		HttpRequestManager.Instance.Upload(AchieveManager.Instance.GetNickName(), GameManager.Instance.Score.ToString());
+        HttpRequestManager.Instance.Upload(SystemInfo.deviceUniqueIdentifier, GameManager.Instance.Score.ToString());
 
         CreateClickEffect(false);
     }
