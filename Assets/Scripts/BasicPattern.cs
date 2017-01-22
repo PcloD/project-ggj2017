@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class BasicPattern : MonoBehaviour
 {
@@ -91,6 +92,17 @@ public class BasicPattern : MonoBehaviour
 		HttpRequestManager.Instance.Upload(AchieveManager.Instance.GetNickName(), GameManager.Instance.Score.ToString());
 
         CreateClickEffect(false);
+
+        StartCoroutine(RecoveryAnimation());
+    }
+
+    private IEnumerator RecoveryAnimation()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        _minCheckingCircle.transform.DOScale(0.75f, 0.75f);
+        _maxCheckingCircle.transform.DOScale(1f, 0.75f);
+        _transform.DOScale(0.75f, 0.75f);
     }
 
     public void OnStartGame()

@@ -198,7 +198,8 @@ public class UIManager : MonoBehaviour
     private IEnumerator LossGame()
     {
         _gameOverEffect.StartGameOverEffect();
-        yield return new WaitForSeconds(1.0f);
+
+        yield return new WaitForSeconds(1.75f);
 
         _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
