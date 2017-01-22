@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class BasicPattern : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class BasicPattern : MonoBehaviour
         }
 
         OnCheckCircle();
+		LerpChangScale ();
 
         _timer += Time.deltaTime * _speed;
         _transform.localScale = (_curPattern.Evaluate(_timer) * _currentRadius.x + _minCheckingCircle.localScale.x) * Vector3.one;
@@ -106,7 +108,32 @@ public class BasicPattern : MonoBehaviour
     private void UpdateRadius()
     {
         _currentRadius = RadiusDataManager.Instance.GetScales();
-        _maxCheckingCircle.transform.localScale = Vector3.one * _currentRadius.y;
-        _minCheckingCircle.transform.localScale = Vector3.one * _currentRadius.z;
+        //_maxCheckingCircle.transform.localScale = Vector3.one * _currentRadius.y;
+        //_minCheckingCircle.transform.localScale = Vector3.one * _currentRadius.z;
+		//LerpChangScale();
+		_isLerpRedius = true;
+		Debug.Log ("[Jimyo]");
     }
+
+
+	private bool _isLerpRedius = false;
+	private void LerpChangScale()
+	{
+		if (_isLerpRedius == true) 
+		{
+			_maxCheckingCircle.transform.localScale = Vector3.Lerp(_maxCheckingCircle.transform.localScale,Vector3.one * _currentRadius.y,10 *Time.deltaTime);
+			_minCheckingCircle.transform.localScale =Vector3.Lerp(_minCheckingCircle.transform.localScale, Vector3.one * _currentRadius.z,10 *Time.deltaTime);
+			if(Mathf.Abs( _maxCheckingCircle.transform.localScale.x - (Vector3.one * _currentRadius.y).x) < 0.01f && Mathf.Abs(_minCheckingCircle.transform.localScale.x - (Vector3.one * _currentRadius.z).x) < 0.01f)
+			{
+				_isLerpRedius = false;
+			}
+		}
+
+
+
+
+
+	}
+
+
 }
