@@ -3687,7 +3687,7 @@ Prefab:
     - target: {fileID: 224365948367642816, guid: f5f9ae5a09d044d2e811efe115ff4905,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224998725722057930, guid: f5f9ae5a09d044d2e811efe115ff4905,
         type: 2}
@@ -4081,7 +4081,7 @@ Prefab:
     - target: {fileID: 224365948367642816, guid: f5f9ae5a09d044d2e811efe115ff4905,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224998725722057930, guid: f5f9ae5a09d044d2e811efe115ff4905,
         type: 2}
@@ -7282,7 +7282,6 @@ MonoBehaviour:
   _minCheckingCircle: {fileID: 1642063914}
   _sliceNumber: 1000
   _amplitudeMultiplier: 10
-  _randomAmplitude: 0.3
 --- !u!120 &2118219148
 LineRenderer:
   m_ObjectHideFlags: 0
