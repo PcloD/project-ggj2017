@@ -10,12 +10,14 @@ public class AudioManager : MonoBehaviour
     }
     private static AudioManager _instance;
 
+    [SerializeField] private AudioSource _BGM;
     [SerializeField] private AudioClip _startSFX;
     [SerializeField] private AudioClip _successSFX;
     [SerializeField] private AudioClip _failureSFX;
 
     private Queue<AudioSource> _pool;
     private AudioSource _sfxCache;
+    private int _volumn;
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class AudioManager : MonoBehaviour
         {
             Recovery(CreateAudioSource());
         }
+
+        UpdateVolumn();
     }
 
     private AudioSource CreateAudioSource()
@@ -61,6 +65,12 @@ public class AudioManager : MonoBehaviour
         _pool.Enqueue(audioSource);
     }
 
+    public void UpdateVolumn()
+    {
+        _volumn = PlayerPrefs.GetInt("AUDIO_ON", 1);
+        _BGM.volume = _volumn;
+    }
+
     public void OnStartButtonClicked()
     {
         PlaySFX(_startSFX);
@@ -79,6 +89,7 @@ public class AudioManager : MonoBehaviour
     private void PlaySFX(AudioClip audioClip)
     {
         _sfxCache = GetAudioSource();
+        _sfxCache.volume = _volumn;
         _sfxCache.PlayOneShot(audioClip);
         RecoveryAudioSource(_sfxCache);
     }

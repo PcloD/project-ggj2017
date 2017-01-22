@@ -37,10 +37,7 @@ public class AudioButton : MonoBehaviour
 		_AudioOn.SetActive (IsOn);
 		_AudioOff.SetActive (!IsOn);
 
-		if (IsOn) 
-		{
-			
-		}
+        AudioManager.Instance.UpdateVolumn();
 	}
 
 	public void OnAudioClicked()
