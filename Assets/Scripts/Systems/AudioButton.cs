@@ -17,9 +17,10 @@ public class AudioButton : MonoBehaviour
         if (!PlayerPrefs.HasKey(AUDIO_ON))
         {
             PlayerPrefs.SetInt(AUDIO_ON, 1);
+            PlayerPrefs.Save();
         }
 
-		SetImage (IsAudioOn());
+        UpdateImage();
 	}
 
 	private bool IsAudioOn()
@@ -27,24 +28,19 @@ public class AudioButton : MonoBehaviour
 		return (PlayerPrefs.GetInt (AUDIO_ON) == 1);
 	}
 
-	private void SetAudioOn( bool IsOn )
+    private void UpdateImage()
 	{
-		PlayerPrefs.SetInt (AUDIO_ON, IsOn?1:0);
-	}
-
-	private void SetImage( bool IsOn )
-	{
-		_AudioOn.SetActive (IsOn);
-		_AudioOff.SetActive (!IsOn);
+        _AudioOn.SetActive (IsAudioOn());
+        _AudioOff.SetActive (!IsAudioOn());
 
         AudioManager.Instance.UpdateVolumn();
 	}
 
 	public void OnAudioClicked()
 	{
-		Debug.logger.Log ("OnAudioClicked");
-		bool audioOn = IsAudioOn ();
-		SetImage (!audioOn);
-		SetAudioOn (!audioOn);
+        PlayerPrefs.SetInt (AUDIO_ON, PlayerPrefs.GetInt(AUDIO_ON) == 1 ? 0 : 1);
+        PlayerPrefs.Save();
+
+        UpdateImage();
 	}
 }

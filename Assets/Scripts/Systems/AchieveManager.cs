@@ -63,6 +63,7 @@ public class AchieveManager
 
 		HightestScore = Score;
 		PlayerPrefs.SetInt (HIGHTEST_SCORE, HightestScore);
+        PlayerPrefs.Save();
 	}
 
 	public int GetHightestScore()

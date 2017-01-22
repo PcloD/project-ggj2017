@@ -134,7 +134,7 @@ public class UIManager : MonoBehaviour
     {
         if (_rankingPanel.activeSelf)
         {
-            _fullScreenButton.transform.SetAsFirstSibling();
+            _fullScreenButton.transform.SetSiblingIndex(5);
             _startText.GetComponent<RectTransformScaleShowHide>().Show();
             _circleParents.GetComponent<RectTransformScaleShowHide>().Show();
             _rankingPanel.SetActive(false);
@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
 
 		if (_introPanel.activeSelf)
 		{
-            _fullScreenButton.transform.SetAsFirstSibling();
+            _fullScreenButton.transform.SetSiblingIndex(5);
             _startText.GetComponent<RectTransformScaleShowHide>().Show();
             _circleParents.GetComponent<RectTransformScaleShowHide>().Show();
 			_introPanel.SetActive(false);
@@ -235,7 +235,6 @@ public class UIManager : MonoBehaviour
     private void OnRankingClosed()
 	{
 		_rankingPanel.SetActive (false);
-        _fullScreenButton.transform.SetAsFirstSibling();
 	}
 
     private void OnAudioClicked()
