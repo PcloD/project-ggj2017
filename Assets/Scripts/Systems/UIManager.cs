@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
 	private Button _audioButton;
     [SerializeField]
     private Button _googlePlayButton;
+    [SerializeField]
+    private GameObject _circleParents;
 
     [Header("Panels")]
     [SerializeField]
@@ -69,6 +71,7 @@ public class UIManager : MonoBehaviour
         _googlePlayButton.gameObject.SetActive(true);
         #endif
 
+        _circleParents.AddComponent<RectTransformScaleShowHide>();
         _lastTitle.AddComponent<RectTransformScaleShowHide>();
         _highestTitle.AddComponent<RectTransformScaleShowHide>();
         _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>();
@@ -131,12 +134,18 @@ public class UIManager : MonoBehaviour
     {
         if (_rankingPanel.activeSelf)
         {
+            _fullScreenButton.transform.SetAsFirstSibling();
+            _startText.GetComponent<RectTransformScaleShowHide>().Show();
+            _circleParents.GetComponent<RectTransformScaleShowHide>().Show();
             _rankingPanel.SetActive(false);
             return;
         }
 
 		if (_introPanel.activeSelf)
 		{
+            _fullScreenButton.transform.SetAsFirstSibling();
+            _startText.GetComponent<RectTransformScaleShowHide>().Show();
+            _circleParents.GetComponent<RectTransformScaleShowHide>().Show();
 			_introPanel.SetActive(false);
 			return;
 		}
@@ -193,6 +202,9 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        _fullScreenButton.transform.SetAsLastSibling();
+        _startText.GetComponent<RectTransformScaleShowHide>().Hide();
+        _circleParents.GetComponent<RectTransformScaleShowHide>().Hide();
 		_rankingPanel.SetActive (true);
 		_rankingPanel.SendMessage ("ClearNameAndScore");
 		HttpRequestManager.Instance.Download ();
@@ -223,6 +235,7 @@ public class UIManager : MonoBehaviour
     private void OnRankingClosed()
 	{
 		_rankingPanel.SetActive (false);
+        _fullScreenButton.transform.SetAsFirstSibling();
 	}
 
     private void OnAudioClicked()
@@ -237,7 +250,10 @@ public class UIManager : MonoBehaviour
 
 	public void OnIntroClicked()
 	{
+        _startText.GetComponent<RectTransformScaleShowHide>().Hide();
+        _circleParents.GetComponent<RectTransformScaleShowHide>().Hide();
 		_introPanel.SetActive (true);
+        _fullScreenButton.transform.SetAsLastSibling();
 	}
 	public void OnIntroClose()
 	{
