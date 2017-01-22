@@ -2242,11 +2242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radiusData:
-  - m_redMinScale: 2
-    m_redMaxScale: 2
-    m_greenMinScale: 1
-    m_greenMaxScale: 1
-    m_lessGreenScale: 0
+  - m_redMinScale: 1.5
+    m_redMaxScale: 2.5
+    m_greenMinScale: 0.5
+    m_greenMaxScale: 2
+    m_lessGreenScale: 0.5
   - m_redMinScale: 1.2
     m_redMaxScale: 1.5
     m_greenMinScale: 1
