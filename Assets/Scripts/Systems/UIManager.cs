@@ -34,7 +34,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField]
 	private Button _rankingButton;
     [SerializeField]
-    private Button _introButton;
+	private Button _introButton;
+	[SerializeField]
+	private Button _audioButton;
 
     [Header("Panels")]
     [SerializeField]
@@ -54,15 +56,22 @@ public class UIManager : MonoBehaviour
         _fullScreenButton.onClick.AddListener(OnFullscreenButtonClicked);
 		_settingButton.onClick.AddListener(OnSettingClicked);
 		_rankingButton.onClick.AddListener(OnRankingClicked);
+		_audioButton.onClick.AddListener(OnAudioClicked);
 
         _lastTitle.AddComponent<RectTransformScaleShowHide>();
         _highestTitle.AddComponent<RectTransformScaleShowHide>();
         _fullScreenButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _settingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
+		_audioButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _rankingButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _startText.gameObject.AddComponent<RectTransformScaleShowHide>();
         _introButton.gameObject.AddComponent<RectTransformScaleShowHide>();
         _gameOverEffect.onEffectCompleteCallback = OnGameOverEffectComplete;
+
+		// setting 跟 sound按鈕特別處理
+		_settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction> ().Hide ();
+		_audioButton.gameObject.GetComponent<AbsRectTransformShowHideAction> ().Hide ();
+		SetSettingButtinActive (true);
     }
 
     private void Start()
@@ -131,6 +140,25 @@ public class UIManager : MonoBehaviour
         _mainGamePanel.SetActive(true);
     }
 
+	private void SetSettingButtinActive( bool IsActive )
+	{
+		Button button = null;
+	#if !UNITY_EDITOR 
+		button = _settingButton;
+	#else
+		button = _audioButton;
+	#endif //UNITY_EDITOR
+
+		if (IsActive) 
+		{
+			button.gameObject.GetComponent<AbsRectTransformShowHideAction> ().Show ();
+		} 
+		else 
+		{
+			button.gameObject.GetComponent<AbsRectTransformShowHideAction> ().Hide ();
+		}
+	}
+
 	private void OnRankingClicked()
 	{
 		_rankingPanel.SetActive (true);
@@ -165,6 +193,11 @@ public class UIManager : MonoBehaviour
 		_rankingPanel.SetActive (false);
 	}
 
+	public void OnAudioClicked()
+	{
+		this.SendMessage ("OnAudioClicked");
+	}
+
 	public void ShowNickNamePanel()
 	{
 		_namePanel.SetActive (true);
@@ -182,7 +215,8 @@ public class UIManager : MonoBehaviour
 
         _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Hide();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
-        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+        // _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
+		SetSettingButtinActive(false);
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Hide();
 
@@ -205,7 +239,8 @@ public class UIManager : MonoBehaviour
 
         _fullScreenButton.gameObject.GetComponent<RectTransformScaleShowHide>().Show();
         _startText.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
-        _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+        // _settingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
+		SetSettingButtinActive(true);
         _rankingButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
         _introButton.gameObject.GetComponent<AbsRectTransformShowHideAction>().Show();
 
